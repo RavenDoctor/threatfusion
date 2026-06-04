@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: threatfusion
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/threatfusion
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
