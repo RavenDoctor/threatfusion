@@ -1,5 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  background: #0f172a;
+  color: white;
   font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #94a3b8;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  color: white;
+  font-size: 16px;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.search-box button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
   color: black;
-  margin: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  opacity: 0.9;
+}
+
+.result-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.result-card h2 {
+  margin-bottom: 20px;
+  color: #38bdf8;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.risk {
+  font-weight: bold;
+}
+
+.risk.low {
+  color: #22c55e;
+}
+
+.risk.medium {
+  color: #f59e0b;
+}
+
+.risk.high {
+  color: #ef4444;
 }

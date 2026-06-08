@@ -1,56 +1,86 @@
 import { useState } from "react";
 
 interface ThreatLookupResponse {
-  ipAddress: string;
-  threatScore: number;
-  country: string;
-  riskLevel: string;
+    ipAddress: string;
+    threatScore: number;
+    country: string;
+    riskLevel: string;
 }
 
 function App() {
 
-  const [ipAddress, setIpAddress] = useState("");
-  const [result, setResult] =
-      useState<ThreatLookupResponse | null>(null);
-  const searchIp = async () => {
+    const [ipAddress, setIpAddress] = useState("");
+    const [result, setResult] =
+        useState<ThreatLookupResponse | null>(null);
 
-    const response = await fetch(
-        `http://localhost:8080/api/search/ip/${ipAddress}`
-    );
+    const searchIp = async () => {
 
-    const data = await response.json();
+        const response = await fetch(
+            `http://localhost:8080/api/search/ip/${ipAddress}`
+        );
 
-    setResult(data);
-  };
-  return (
-      <div>
+        const data = await response.json();
 
-        <h1>ThreatFusion</h1>
+        setResult(data);
+    };
 
-        <input
-            type="text"
-            value={ipAddress}
-            onChange={(e) => setIpAddress(e.target.value)}
-            placeholder="Enter IP Address"
-        />
+    return (
+        <div className="container">
 
-        <button onClick={searchIp}>
-          Search
-        </button>
-
-        {result && (
-            <div>
-              <h2>Result</h2>
-
-              <p>IP: {result.ipAddress}</p>
-              <p>Country: {result.country}</p>
-              <p>Threat Score: {result.threatScore}</p>
-              <p>Risk Level: {result.riskLevel}</p>
+            <div className="header">
+                <h1>ThreatFusion</h1>
+                <p>Threat Intelligence Platform</p>
             </div>
-        )}
 
-      </div>
-  );
+            <div className="search-box">
+
+                <input
+                    type="text"
+                    value={ipAddress}
+                    onChange={(e) => setIpAddress(e.target.value)}
+                    placeholder="Enter IP Address"
+                />
+
+                <button onClick={searchIp}>
+                    Analyze
+                </button>
+
+            </div>
+
+            {result && (
+
+                <div className="result-card">
+
+                    <h2>Analysis Result</h2>
+
+                    <div className="result-row">
+                        <span>IP Address</span>
+                        <span>{result.ipAddress}</span>
+                    </div>
+
+                    <div className="result-row">
+                        <span>Country</span>
+                        <span>{result.country}</span>
+                    </div>
+
+                    <div className="result-row">
+                        <span>Threat Score</span>
+                        <span>{result.threatScore}</span>
+                    </div>
+
+                    <div className="result-row">
+                        <span>Risk Level</span>
+                        <span className={`risk ${result.riskLevel.toLowerCase()}`}>
+                            {result.riskLevel}
+                        </span>
+                    </div>
+
+                </div>
+
+            )}
+
+        </div>
+    );
 }
 
 export default App;
