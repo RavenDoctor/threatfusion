@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ThreatLookupResponse {
     ipAddress: string;
@@ -7,11 +7,31 @@ interface ThreatLookupResponse {
     riskLevel: string;
 }
 
+interface HistoryItem {
+    id: number;
+    ipAddress: string;
+    threatScore: number;
+    riskLevel: string;
+    searchedAt: string;
+}
+
 function App() {
 
     const [ipAddress, setIpAddress] = useState("");
     const [result, setResult] =
         useState<ThreatLookupResponse | null>(null);
+    const [history, setHistory] = useState<HistoryItem[]>([]);
+
+    const loadHistory = async () => {
+
+        const response = await fetch(
+            "http://localhost:8080/api/history"
+        );
+
+        const data = await response.json();
+
+        setHistory(data);
+    };
 
     const searchIp = async () => {
 
@@ -22,7 +42,13 @@ function App() {
         const data = await response.json();
 
         setResult(data);
+
+        await loadHistory();
     };
+
+    useEffect(() => {
+        loadHistory();
+    }, []);
 
     return (
         <div className="container">
@@ -78,6 +104,46 @@ function App() {
                 </div>
 
             )}
+
+            <div className="result-card" style={{ marginTop: "25px" }}>
+
+                <h2>Search History</h2>
+
+                <table className="history-table">
+
+                    <thead>
+                    <tr>
+                        <th>IP Address</th>
+                        <th>Threat Score</th>
+                        <th>Risk Level</th>
+                        <th>Searched At</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    {history.map((item) => (
+
+                        <tr key={item.id}>
+                            <td>{item.ipAddress}</td>
+                            <td>{item.threatScore}</td>
+                            <td>
+                                <span className={`risk ${item.riskLevel.toLowerCase()}`}>
+                                    {item.riskLevel}
+                                </span>
+                            </td>
+                            <td>
+                                {new Date(item.searchedAt)
+                                    .toLocaleString()}
+                            </td>
+                        </tr>
+
+                    ))}
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </div>
     );
