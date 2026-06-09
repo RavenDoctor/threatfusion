@@ -1,73 +1,138 @@
-# React + TypeScript + Vite
+# 🛡 ThreatFusion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hello! My name is Adam and I've developed this new application called ThreatFusion.
 
-Currently, two official plugins are available:
+ThreatFusion is a full-stack threat intelligence platform built using Java, Spring Boot, React, TypeScript, and PostgreSQL.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application enables users to perform IP address lookups, enrich results with geolocation data, track historical searches, and view threat intelligence metrics through a modern dashboard interface.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+* IP Address Intelligence Lookup
+* GeoIP Enrichment
+* Threat Scoring
+* Search History Dashboard
+* Statistics Dashboard
+* PostgreSQL Persistence
+* RESTful API Architecture
+* React Frontend
+* Spring Boot Backend
+* JUnit & Mockito Testing
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technology Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Backend
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Java 21
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* Maven
+* PostgreSQL
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+
+### Testing
+
+* JUnit
+* Mockito
+
+### Tools
+
+* Git
+* GitHub
+
+---
+
+## Architecture
+
+React Frontend
+
+↓
+
+Spring Boot REST API
+
+↓
+
+PostgreSQL Database
+
+↓
+
+GeoIP External Service
+
+---
+
+## Screenshots
+
+### Dashboard
+
+![ThreatFusion Dashboard](screenshots/dashboard.png)
+
+---
+
+## Running Locally
+
+### Backend
+
+Create a PostgreSQL database:
+
+```sql
+CREATE DATABASE threatfusion;
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Configure:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```yaml
+application.yml
 ```
+
+with your PostgreSQL credentials.
+
+Run:
+
+```bash
+mvn spring-boot:run
+```
+
+### Frontend
+
+Navigate to:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the application:
+
+```bash
+npm run dev
+```
+
+---
+
+## Learning Outcomes
+
+This project was developed to strengthen practical experience with:
+
+* Full-stack Java development
+* Spring Boot REST APIs
+* PostgreSQL integration
+* React frontend development
+* JPA/Hibernate persistence
+* Automated testing with JUnit and Mockito
+* External API integrations
+* Git and GitHub workflows
