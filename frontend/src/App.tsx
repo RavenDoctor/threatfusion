@@ -21,7 +21,19 @@ function App() {
     const [result, setResult] =
         useState<ThreatLookupResponse | null>(null);
     const [history, setHistory] = useState<HistoryItem[]>([]);
+    const totalSearches = history.length;
 
+    const highRiskCount = history.filter(
+        item => item.riskLevel === "HIGH"
+    ).length;
+
+    const mediumRiskCount = history.filter(
+        item => item.riskLevel === "MEDIUM"
+    ).length;
+
+    const lowRiskCount = history.filter(
+        item => item.riskLevel === "LOW"
+    ).length;
     const loadHistory = async () => {
 
         const response = await fetch(
@@ -104,7 +116,29 @@ function App() {
                 </div>
 
             )}
+            <div className="stats-grid">
 
+                <div className="stat-card">
+                    <h3>Total Searches</h3>
+                    <p>{totalSearches}</p>
+                </div>
+
+                <div className="stat-card high-stat">
+                    <h3>High Risk</h3>
+                    <p>{highRiskCount}</p>
+                </div>
+
+                <div className="stat-card medium-stat">
+                    <h3>Medium Risk</h3>
+                    <p>{mediumRiskCount}</p>
+                </div>
+
+                <div className="stat-card low-stat">
+                    <h3>Low Risk</h3>
+                    <p>{lowRiskCount}</p>
+                </div>
+
+            </div>
             <div className="result-card" style={{ marginTop: "25px" }}>
 
                 <h2>Search History</h2>

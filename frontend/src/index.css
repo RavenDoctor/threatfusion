@@ -5,72 +5,136 @@
 }
 
 body {
-  background: #0f172a;
+  min-height: 100vh;
+
+  background:
+          radial-gradient(circle at top left,
+          rgba(59, 130, 246, 0.15),
+          transparent 30%),
+          radial-gradient(circle at top right,
+          rgba(139, 92, 246, 0.15),
+          transparent 30%),
+          #0f172a;
+
   color: white;
-  font-family: Arial, sans-serif;
+
+  font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 60px auto;
   padding: 20px;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .header h1 {
-  font-size: 3rem;
-  color: #38bdf8;
+  font-size: 4rem;
+  font-weight: 800;
   margin-bottom: 10px;
+
+  background: linear-gradient(
+          135deg,
+          #38bdf8,
+          #818cf8
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .header p {
   color: #94a3b8;
+  font-size: 1.1rem;
 }
 
 .search-box {
   display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
+  gap: 15px;
+  margin-bottom: 35px;
 }
 
 .search-box input {
   flex: 1;
-  padding: 15px;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  background: #1e293b;
+
+  padding: 18px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(12px);
+
   color: white;
+
   font-size: 16px;
+
+  transition: 0.25s;
 }
 
 .search-box input:focus {
   outline: none;
   border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.15);
 }
 
 .search-box button {
-  padding: 15px 25px;
+
+  padding: 18px 30px;
+
   border: none;
-  border-radius: 8px;
-  background: #38bdf8;
-  color: black;
-  font-weight: bold;
+
+  border-radius: 16px;
+
+  background:
+          linear-gradient(
+                  135deg,
+                  #3b82f6,
+                  #8b5cf6
+          );
+
+  color: white;
+
+  font-weight: 700;
+
   cursor: pointer;
+
+  transition: 0.25s;
 }
 
 .search-box button:hover {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59,130,246,0.3);
 }
 
 .result-card {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 12px;
+
+  background:
+          rgba(255,255,255,0.05);
+
+  backdrop-filter:
+          blur(14px);
+
+  border:
+          1px solid rgba(255,255,255,0.08);
+
+  border-radius: 20px;
+
   padding: 25px;
+
+  box-shadow:
+          0 10px 30px rgba(0,0,0,0.25);
 }
 
 .result-card h2 {
@@ -81,8 +145,8 @@ body {
 .result-row {
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #334155;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .result-row:last-child {
@@ -90,17 +154,118 @@ body {
 }
 
 .risk {
-  font-weight: bold;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
 }
 
 .risk.low {
   color: #22c55e;
+  background: rgba(34,197,94,0.15);
 }
 
 .risk.medium {
   color: #f59e0b;
+  background: rgba(245,158,11,0.15);
 }
 
 .risk.high {
   color: #ef4444;
+  background: rgba(239,68,68,0.15);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+
+  background:
+          rgba(255,255,255,0.05);
+
+  backdrop-filter:
+          blur(14px);
+
+  border:
+          1px solid rgba(255,255,255,0.08);
+
+  border-radius: 20px;
+
+  padding: 24px;
+
+  text-align: center;
+
+  transition: 0.25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card h3 {
+  color: #94a3b8;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.stat-card p {
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+
+.high-stat p {
+  color: #ef4444;
+}
+
+.medium-stat p {
+  color: #f59e0b;
+}
+
+.low-stat p {
+  color: #22c55e;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.history-table th,
+.history-table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.history-table th {
+  color: #38bdf8;
+}
+
+.history-table tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+@media (max-width: 900px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .header h1 {
+    font-size: 3rem;
+  }
 }
