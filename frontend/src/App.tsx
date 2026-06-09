@@ -178,7 +178,32 @@ function App() {
                 </table>
 
             </div>
+            <footer className="footer">
 
+                <h3>About The Developer</h3>
+
+                <p>
+                    Built by Adam Shaddick.
+                </p>
+
+                <p>
+                    Software Engineer & Cyber Security Graduate
+                    specialising in Java, Spring Boot, React and
+                    Security Engineering.
+                </p>
+                <div className="footer-links">
+
+                    <a href="https://github.com/RavenDoctor/">
+                        GitHub
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/adshadk-455811323/">
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </footer>
         </div>
     );
 }
